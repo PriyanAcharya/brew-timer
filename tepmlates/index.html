@@ -11,9 +11,9 @@
     <div class="recipes">
         {% for recipe in recipes %}
             <div class="card">
-                <h3>{{ recipe[1] }}</h3>
-                <p>Brew Time: {{ recipe[2] }} seconds</p>
-                <a href="{{ url_for('start_timer', brew_time=recipe[2], name=recipe[1]) }}">Start Brew</a>
+                <h3>{{ recipe[0] }}</h3>
+                <p>Brew Time: {{ recipe[1] }} seconds</p>
+                <a href="{{ url_for('start_timer', brew_time=recipe[1], name=recipe[0]) }}">Start Brew</a>
             </div>
         {% endfor %}
     </div>
