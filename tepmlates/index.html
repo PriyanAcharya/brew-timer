@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Brew Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>☕ Coffee Brew Timer</h1>
+    <h2>Select a Coffee Recipe</h2>
+    <div class="recipes">
+        {% for recipe in recipes %}
+            <div class="card">
+                <h3>{{ recipe[1] }}</h3>
+                <p>Brew Time: {{ recipe[2] }} seconds</p>
+                <a href="{{ url_for('start_timer', brew_time=recipe[2], name=recipe[1]) }}">Start Brew</a>
+            </div>
+        {% endfor %}
+    </div>
 
+    <h2>Add New Recipe</h2>
+    <form action="{{ url_for('add_recipe') }}" method="post">
+        <input type="text" name="name" placeholder="Coffee Name" required>
+        <input type="number" name="brew_time" placeholder="Brew Time (seconds)" required>
+        <button type="submit">Add Recipe</button>
+    </form>
+</body>
+</html>
